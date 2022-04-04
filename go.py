@@ -1,5 +1,8 @@
 import RPi.GPIO as GPIO
 import time
+import sys
+
+direction = sys.argv[1]
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -9,31 +12,16 @@ left_front = 37
 right_back = 36
 right_front = 35
 
-# t = 3
-
-# GPIO.setup(left_back, GPIO.OUT)
-# GPIO.setup(left_front, GPIO.OUT)
-# GPIO.setup(right_back, GPIO.OUT)
-# GPIO.setup(right_front, GPIO.OUT)
 
 
-# GPIO.output(right_front, True)
-# GPIO.output(left_front, True)
-# time.sleep(t)
-# GPIO.output(right_front, False)  
-# GPIO.output(left_front, False)
-# time.sleep(3)
-# GPIO.output(right_back, True)
-# GPIO.output(left_back, True)
-# time.sleep(3)
-# GPIO.output(right_back, False)
-# GPIO.output(left_back, False)
+GPIO.setup(left_back, GPIO.OUT)
+GPIO.setup(left_front, GPIO.OUT)
+GPIO.setup(right_back, GPIO.OUT)
+GPIO.setup(right_front, GPIO.OUT)
 
-# GPIO.cleanup()
 
-import sys
 
-direction = sys.argv[1]
+
 
 
 if direction == "f":
@@ -64,4 +52,5 @@ if direction == "l":
     GPIO.output(left_front, False)
 
 if direction == "quit":
+    GPIO.cleanup()
     quit()
