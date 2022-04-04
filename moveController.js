@@ -1,32 +1,39 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const {PythonShell} = require('python-shell');
+const { PythonShell } = require("python-shell");
 
-let python = new PythonShell('go.py', {mode: 'text'})
+let python = new PythonShell("go.py", { mode: "text" });
 
-router.get('/forward', (req, res) => {
+router.get("/:arg", (req, res) => {
+  let arg = req.params.arg;
+  console.log(arg);
+  let options = {
+    args: [arg],
+  };
 
-    python.send('f')
-    // PythonShell.run('go.py', null, function (err, results) {
-    //     if (err) throw err;
-    //     console.log(results);
-    // });
-})
+  PythonShell.run("go.py", options, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+    }
+  });
+});
 
-router.get('/back', (req, res) => {
-    return console.log("back")
-})
+// router.get("/back", (req, res) => {
+//   return console.log("back");
+// });
 
-router.get('/right', (req, res) => {
-    return console.log("right")
-})
+// router.get("/right", (req, res) => {
+//   return console.log("right");
+// });
 
-router.get('/left', (req, res) => {
-    return console.log("left")
-})
+// router.get("/left", (req, res) => {
+//   return console.log("left");
+// });
 
-router.get('/stop', (req, res) => {
-    return console.log("stop")
-})
+// router.get("/stop", (req, res) => {
+//   return console.log("stop");
+// });
 
 module.exports = router;
