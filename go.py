@@ -33,25 +33,22 @@
 
 import sys
 
-while True:
+direction = sys.argv[1]
 
-    direction = sys.argv[1]
-    print(sys.argv[0])
+if direction == "f":
+    print("Move Forward")
 
-    if direction == "f":
-        print("Move Forward")
+if direction == "s":
+    print("Stop")
 
-    if direction == "s":
-        print("Stop")
+if direction == "b":
+    print("Move Back")
 
-    if direction == "b":
-        print("Move Back")
+if direction == "r":
+    print("Turn Right")
 
-    if direction == "r":
-        print("Turn Right")
+if direction == "l":
+    print("Turn Left")
 
-    if direction == "l":
-        print("Turn Left")
-
-    if direction == "q":
-        quit()
+if direction == "q":
+    quit()
