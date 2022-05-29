@@ -6,21 +6,17 @@ const {PythonShell} = require('python-shell');
 let options;
 
 router.get('/forward', (req, res) => {
-    console.log("go")
+    options = {
+        args: ["f"]
+    }
+
+    PythonShell.run('go.py', options, function (err, results) {
+        if (err) throw err;
+        console.log(results);
     return res.json({
         code: 0
     })
-    // options = {
-    //     args: ["f"]
-    // }
-
-    // PythonShell.run('go.py', options, function (err, results) {
-    //     if (err) throw err;
-    //     console.log(results);
-    // return res.json({
-    //     code: 0
-    // })
-    // });
+    });
 })
 
 router.get('/back', (req, res) => {
@@ -66,21 +62,17 @@ router.get('/left', (req, res) => {
 })
 
 router.get('/stop', (req, res) => {
-    console.log("stop")
-    return res.json({
+    options = {
+        args: ["s"]
+    }
+
+    PythonShell.run('go.py', options, function (err, results) {
+        if (err) throw err;
+        console.log(results);
+        return res.json({
         code: 0
     })
-    // options = {
-    //     args: ["s"]
-    // }
-
-    // PythonShell.run('go.py', options, function (err, results) {
-    //     if (err) throw err;
-    //     console.log(results);
-    //     return res.json({
-    //     code: 0
-    // })
-    // });
+    });
 })
 
 module.exports = router;
